@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ObjectHandler\IKernelObejct.h" />
+    <ClInclude Include="ObjectHandler\INamedObject.h" />
+    <ClInclude Include="ObjectHandler\IWindowsKernelObject.h" />
+    <ClInclude Include="SecurityObjects\ISecurity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}</ProjectGuid>
@@ -122,8 +131,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
