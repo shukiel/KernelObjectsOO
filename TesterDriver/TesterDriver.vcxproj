@@ -18,28 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h" />
-    <ClInclude Include="ObjectHandler\FileOpenOptions.h" />
-    <ClInclude Include="ObjectHandler\IAccessOptions.h" />
-    <ClInclude Include="ObjectHandler\ObjectAttributeFactory.h" />
-    <ClInclude Include="ObjectHandler\ConcreteObjects\file.h" />
-    <ClInclude Include="ObjectHandler\IKernelObject.h" />
-    <ClInclude Include="ObjectHandler\INamedObject.h" />
-    <ClInclude Include="ObjectHandler\IShareAccess.h" />
-    <ClInclude Include="ObjectHandler\IWindowsKernelObject.h" />
-    <ClInclude Include="SecurityObjects\ISecurity.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ObjectHandler\FileOpenOptions.cpp" />
-    <ClCompile Include="ObjectHandler\INamedObject.cpp" />
-    <ClCompile Include="ObjectHandler\ObjectAttributeFactory.cpp" />
-    <ClCompile Include="ObjectHandler\ConcreteObjects\file.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}</ProjectGuid>
-    <RootNamespace>KernelObjectsOO</RootNamespace>
+    <ProjectGuid>{CF4BAC30-E985-45E8-8723-620E74942C71}</ProjectGuid>
+    <RootNamespace>TesterDriver</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -63,7 +45,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -88,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -99,7 +81,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -133,7 +115,6 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +122,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -19,11 +19,11 @@
     <Filter Include="Source Files\SecurityObjects">
       <UniqueIdentifier>{13534c9f-54f3-41df-8c9c-c3a3b517d4b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ObjectHandler\ConcreteObjetcs">
+      <UniqueIdentifier>{dbd8c492-60dc-413b-a92d-18574bb7fbc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ObjectHandler\IKernelObejct.h">
-      <Filter>Source Files\ObjectHandler</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectHandler\INamedObject.h">
       <Filter>Source Files\ObjectHandler</Filter>
     </ClInclude>
@@ -33,9 +33,39 @@
     <ClInclude Include="SecurityObjects\ISecurity.h">
       <Filter>Source Files\SecurityObjects</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectHandler\IKernelObject.h">
+      <Filter>Source Files\ObjectHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHandler\ConcreteObjects\file.h">
+      <Filter>Source Files\ObjectHandler\ConcreteObjetcs</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHandler\IShareAccess.h">
+      <Filter>Source Files\ObjectHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHandler\ObjectAttributeFactory.h">
+      <Filter>Source Files\ObjectHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHandler\IAccessOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHandler\FileOpenOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="ObjectHandler\ConcreteObjects\file.cpp">
+      <Filter>Source Files\ObjectHandler\ConcreteObjetcs</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHandler\ObjectAttributeFactory.cpp">
+      <Filter>Source Files\ObjectHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHandler\INamedObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHandler\FileOpenOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KernelObjectsOO", "KernelOb
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{2677DB72-F5F2-4035-BC05-26847466A20C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesterDriver", "TesterDriver\TesterDriver.vcxproj", "{CF4BAC30-E985-45E8-8723-620E74942C71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{2677DB72-F5F2-4035-BC05-26847466A20C}.Release|x64.Build.0 = Release|x64
 		{2677DB72-F5F2-4035-BC05-26847466A20C}.Release|x86.ActiveCfg = Release|Win32
 		{2677DB72-F5F2-4035-BC05-26847466A20C}.Release|x86.Build.0 = Release|Win32
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Debug|x64.ActiveCfg = Debug|x64
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Debug|x64.Build.0 = Debug|x64
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Debug|x86.ActiveCfg = Debug|Win32
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Debug|x86.Build.0 = Debug|Win32
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Release|x64.ActiveCfg = Release|x64
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Release|x64.Build.0 = Release|x64
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Release|x86.ActiveCfg = Release|Win32
+		{CF4BAC30-E985-45E8-8723-620E74942C71}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

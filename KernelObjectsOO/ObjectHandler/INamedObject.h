@@ -1,12 +1,17 @@
-#include "IWindowsKernelObject.h"
+#pragma once
 
+#include "IWindowsKernelObject.h"
+#include <string>
 //TODO: Add includes
 
-class INamedObject : public IKernelObjects
+class INamedObject : public IWindowsKernelObject
 {
-    public:
-    std::wstring(getName);
+public:
+	virtual void openByName(std::wstring objectName) { m_name = objectName; m_isNameInitialized = true; Open(); };
+	virtual void Open() override ;
+	std::wstring getName() { return m_name; };
 
-    private:
-    std::wstring m_name; //immutable
-}
+protected:
+	std::wstring m_name = L""; //immutable
+	bool m_isNameInitialized = false;
+};
