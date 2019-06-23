@@ -36,8 +36,8 @@ public:
 
 	enum class OnOpen
 	{
-	#if WINVER >= _WIN32_WINNT_WIN8
-		fileSessionAware = FILE_SESSION_AWARE
+#if WINVER >= _WIN32_WINNT_WIN8
+		//fileSessionAware = FILE_SESSION_AWARE,
 	#endif
 		OpenByFileID = FILE_OPEN_BY_FILE_ID,
 		ReparsePoint = FILE_OPEN_REPARSE_POINT,

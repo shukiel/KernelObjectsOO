@@ -63,6 +63,15 @@
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileOpenOptions.h">
       <Filter>Source Files\ObjectHandler\ConcreteObjetcs\File</Filter>
     </ClInclude>
+    <ClInclude Include="ErrorHandling\NT_Wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorHandling\Exceptions\IException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectHandler\ObjectAttributeFactory.cpp">
@@ -79,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="ObjectHandler\ConcreteObjects\FileOpenOptions.cpp">
       <Filter>Source Files\ObjectHandler\ConcreteObjetcs\File</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

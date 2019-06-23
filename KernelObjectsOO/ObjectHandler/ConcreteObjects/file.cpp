@@ -1,12 +1,11 @@
+#include "pch.h"
 #include "file.h"
-#include<windows.h>
-#include <winternl.h>
 #include <stdexcept>
 #include "../IShareAccess.h"
 #include "../ObjectAttributeFactory.h"
 #include "FileOpenOptions.h"
 #include "../IAccessOptions.h"
-#include <iostream>
+
 
 
 void File::Create()
@@ -26,6 +25,7 @@ void File::Destroy()
 
 void File::Open()
 {
+
 	__super::Open();
 
 	IO_STATUS_BLOCK statusBlock;
@@ -37,13 +37,12 @@ void File::Open()
 		&statusBlock,
 		IShareAccess::CreateSharesMask(IShareAccess::FileShareOptions::Read, IShareAccess::FileShareOptions::Write, IShareAccess::FileShareOptions::Delete),
 		(ULONG)FileOpenOptions::FileType::NonDirectoryFile);
+	m_handle = outHandle;
 	std::cout << rv << std::endl;
 }
 
 void File::Delete()
 {
-	throw std::logic_error("The method or operation is not implemented.");
-	
 }
 
 std::wstring File::getUNCFileName()

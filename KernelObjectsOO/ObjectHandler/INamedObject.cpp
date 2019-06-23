@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "INamedObject.h"
 #include "../ErrorHandling/Exceptions/NamedObjectNotInitalizedException.h"
 

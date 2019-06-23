@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ObjectAttributeFactory.h"
 #include "INamedObject.h"
 #include "Tools/StringTools.h"
