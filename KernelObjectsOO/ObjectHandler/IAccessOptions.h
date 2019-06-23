@@ -1,9 +1,56 @@
 #pragma once
+#include <windows.h>
+// #include <winnt.h>
+// #include <WinInet.h>
 
-class IAccessOptions
+//This abstract class will supply us with the standard, Basic and Generic Access Rights options, for object specific access - look for the specific sub-classes.
+class IAccessRights
 {
+public:
+	//Using these will turn on the correct bits within the specific access rights, depending on the object type
+	enum class GenericAccessRights 
+	{
+		Read = GENERIC_READ,
+		Write = GENERIC_WRITE,
+		Execute = GENERIC_EXECUTE,
+		All = GENERIC_ALL
+	}; 
 
+	enum class StandartAccessRights
+	{
+		Read = STANDARD_RIGHTS_READ,
+		Write = STANDARD_RIGHTS_WRITE,
+		Execute = STANDARD_RIGHTS_EXECUTE,
+		All = STANDARD_RIGHTS_ALL
+	};			 
+
+	enum class BasicAccessRight 
+	{
+		Delete = DELETE,
+		ReadControl = READ_CONTROL,
+		WriteDAC = WRITE_DAC,
+		WriteOwner = WRITE_OWNER,
+		Syncronize = SYNCHRONIZE
+	};
+
+	//Specific Rights
+	static const ACCESS_MASK AllSpecificRights = SPECIFIC_RIGHTS_ALL;
+
+	//System Access 
+	static const ACCESS_MASK SyetmSecurity = ACCESS_SYSTEM_SECURITY;
+
+	//Maximum Access
+	static const ACCESS_MASK Maximum = MAXIMUM_ALLOWED;
+	
 };
+
+//    1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0
+//   +-------+-------+---------------+-------------------------------+
+//   |Generic|Special| StandardRights|         SpecificRights        |
+//   |Rights |Rights |   Rights      |                               |
+//   +-------+-------+---------------+-------------------------------+
+
+
 
 /*
 #define DELETE                           (0x00010000L)

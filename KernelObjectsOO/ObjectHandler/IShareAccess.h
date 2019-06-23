@@ -1,19 +1,19 @@
 #pragma once
-#include <winnt.h>
+#include <windows.h>
+//#include <winnt.h>
 
 class IShareAccess
 {
 public:
-	static enum FileShareOptions 
+	enum class FileShareOptions 
 	{
 		Read = FILE_SHARE_READ, 
 		Write = FILE_SHARE_WRITE,
 		Delete = FILE_SHARE_DELETE
 	};
-
-	template<FileShareOptions...>
-	static DWORD CreateSharesMask(FileShareOptions args...)
+	template <typename ...T>
+	static DWORD CreateSharesMask(T ... args)
 	{
-		return (args | ... | 0);
+		return ((DWORD)args | ... | 0);
 	}
 };

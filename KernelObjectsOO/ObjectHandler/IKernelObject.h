@@ -3,9 +3,13 @@
 // Enosh Cohen
 // TODO: Add includes
 #include <Windows.h>
+#include "../targetver.h"
+
 
 class IKernelObject
 {
+public:
+	IKernelObject() {};
 public:
 	virtual void Create() = 0;			//Create an Object -- Might be obsolete using factories
 	virtual void Open() = 0;

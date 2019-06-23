@@ -5,8 +5,10 @@
 class IWindowsKernelObject : public IKernelObject
 {
 public:
+	IWindowsKernelObject() {};
+public:
 	const HANDLE GetHandle() { return m_handle; };
 
 protected:
-	const HANDLE m_handle;
+	HANDLE m_handle;
 };

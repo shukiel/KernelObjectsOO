@@ -7,11 +7,13 @@
 class INamedObject : public IWindowsKernelObject
 {
 public:
-	virtual void openByName(std::wstring objectName) { m_name = objectName; m_isNameInitialized = true; Open(); };
+	INamedObject() : m_name(L""), m_isNameInitialized(false) {};
+public:
+	virtual void Open(std::wstring objectName);	//Opening a named object by name
 	virtual void Open() override ;
 	std::wstring getName() { return m_name; };
 
 protected:
-	std::wstring m_name = L""; //immutable
-	bool m_isNameInitialized = false;
+	std::wstring m_name; //immutable
+	bool m_isNameInitialized;
 };

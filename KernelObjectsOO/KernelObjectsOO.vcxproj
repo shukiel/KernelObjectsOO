@@ -20,8 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h" />
-    <ClInclude Include="ObjectHandler\FileOpenOptions.h" />
-    <ClInclude Include="ObjectHandler\IAccessOptions.h" />
+    <ClInclude Include="ObjectHandler\ConcreteObjects\FileDirectory.h" />
+    <ClInclude Include="ObjectHandler\ConcreteObjects\FileOpenOptions.h" />
+    <ClInclude Include="ObjectHandler\IAccessRights.h" />
     <ClInclude Include="ObjectHandler\ObjectAttributeFactory.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\file.h" />
     <ClInclude Include="ObjectHandler\IKernelObject.h" />
@@ -29,9 +30,11 @@
     <ClInclude Include="ObjectHandler\IShareAccess.h" />
     <ClInclude Include="ObjectHandler\IWindowsKernelObject.h" />
     <ClInclude Include="SecurityObjects\ISecurity.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ObjectHandler\FileOpenOptions.cpp" />
+    <ClCompile Include="ObjectHandler\ConcreteObjects\FileDirectory.cpp" />
+    <ClCompile Include="ObjectHandler\ConcreteObjects\FileOpenOptions.cpp" />
     <ClCompile Include="ObjectHandler\INamedObject.cpp" />
     <ClCompile Include="ObjectHandler\ObjectAttributeFactory.cpp" />
     <ClCompile Include="ObjectHandler\ConcreteObjects\file.cpp" />
@@ -134,6 +137,8 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

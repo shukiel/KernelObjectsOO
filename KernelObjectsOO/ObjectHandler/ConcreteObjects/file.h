@@ -3,7 +3,6 @@
 
 class File : public INamedObject
 {
-
 public:
 	virtual void Create() override;
 
@@ -15,6 +14,9 @@ public:
 
 
 	virtual void Open() override;
+
+	
+	virtual void Delete();
 
 
 	std::wstring getUNCFileName();

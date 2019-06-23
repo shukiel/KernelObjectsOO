@@ -1,15 +1,24 @@
 #include "ObjectAttributeFactory.h"
 #include "INamedObject.h"
+#include "Tools/StringTools.h"
 
 OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateObjectAttribute(INamedObject *namedObject, ObjectAttributeType type)
 {
+	switch(type)
+	{
+	case DEFAULT:
+		return CreateDefaulObjectAttribute(namedObject);
+	}
 
+	return OBJECT_ATTRIBUTES();
 }
 
 OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateDefaulObjectAttribute(INamedObject* namedObject)
 {
 	OBJECT_ATTRIBUTES outObjectAttribute;
-	InitializeObjectAttributes(&outObjectAttribute, OBJ_INHERIT, namedObject->getName().c_str(), NULL, NULL);
+	PUNICODE_STRING tempName = tools::getUnicodeStringFromWstring(namedObject->getName());
+	InitializeObjectAttributes(&outObjectAttribute, tempName,OBJ_INHERIT, NULL, NULL);
+	return outObjectAttribute;
 }
 
 

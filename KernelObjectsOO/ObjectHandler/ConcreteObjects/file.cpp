@@ -1,8 +1,12 @@
 #include "file.h"
+#include<windows.h>
 #include <winternl.h>
 #include <stdexcept>
 #include "../IShareAccess.h"
 #include "../ObjectAttributeFactory.h"
+#include "FileOpenOptions.h"
+#include "../IAccessOptions.h"
+#include <iostream>
 
 
 void File::Create()
@@ -12,12 +16,12 @@ void File::Create()
 
 void File::Close()
 {
-	throw std::logic_error("The method or operation is not implemented.");
+	NtClose(this->m_handle);
 }
 
 void File::Destroy()
 {
-	NtClose(this->m_handle);
+	throw std::logic_error("The method or operation is not implemented.");
 }
 
 void File::Open()
@@ -26,11 +30,23 @@ void File::Open()
 
 	IO_STATUS_BLOCK statusBlock;
 	HANDLE outHandle;
-	NtOpenFile(
+	NTSTATUS rv = NtOpenFile(
 		&outHandle,
-		IShareAccess::CreateSharesMask(IShareAccess::Read, IShareAccess::Write, IShareAccess::Delete),
+		(ACCESS_MASK)IAccessRights::GenericAccessRights::All,
 		&ObjectAttributeFactory::CreateObjectAttribute(this, ObjectAttributeFactory::ObjectAttributeType::DEFAULT),
 		&statusBlock,
-		IShareAccess::CreateSharesMask(IShareAccess::Read, IShareAccess::Write, IShareAccess::Delete), 
-		FileOpenOptions::CreateFileOpenOptionsMask());
+		IShareAccess::CreateSharesMask(IShareAccess::FileShareOptions::Read, IShareAccess::FileShareOptions::Write, IShareAccess::FileShareOptions::Delete),
+		(ULONG)FileOpenOptions::FileType::NonDirectoryFile);
+	std::cout << rv << std::endl;
+}
+
+void File::Delete()
+{
+	throw std::logic_error("The method or operation is not implemented.");
+	
+}
+
+std::wstring File::getUNCFileName()
+{
+	throw std::logic_error("Not implemented");
 }
