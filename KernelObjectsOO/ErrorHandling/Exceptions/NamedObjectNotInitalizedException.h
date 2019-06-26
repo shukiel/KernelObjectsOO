@@ -1,20 +1,22 @@
 #pragma once
+#include "IException.h"
 
-class NamedObjectNotInitalizedException
+namespace OOException
 {
-public:
-	NamedObjectNotInitalizedException()
+														 
+	class NamedObjectNotInitalizedException : public IException
 	{
-	}
+	public:
+		NamedObjectNotInitalizedException() : IException(DWORD(-1), L"Tried to Create an object before initializing it!", IException::ErrCodeType::OO_ERROR_CODE) {};
 
-	~NamedObjectNotInitalizedException()
-	{
-	}
+		~NamedObjectNotInitalizedException()
+		{
+		}
 
-protected:
-
-private:
-
-};
-
-
+		virtual const char* what() const override {return (CHAR*) m_errMessage.c_str();};
+	protected:
+	private:
+	};
+	
+	
+}//end OOException

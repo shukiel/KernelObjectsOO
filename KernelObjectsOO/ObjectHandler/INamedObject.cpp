@@ -6,7 +6,7 @@
 void INamedObject::Open()
 {
 	if (!m_isNameInitialized) 
-		throw new NamedObjectNotInitalizedException();
+		throw new OOException::NamedObjectNotInitalizedException();
 }
 
 void INamedObject::Open(std::wstring objectName)

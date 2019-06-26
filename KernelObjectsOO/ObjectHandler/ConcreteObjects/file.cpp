@@ -5,6 +5,7 @@
 #include "../ObjectAttributeFactory.h"
 #include "FileOpenOptions.h"
 #include "../IAccessOptions.h"
+#include "ErrorHandling/NT_Wrapper.h"
 
 
 
@@ -30,7 +31,8 @@ void File::Open()
 
 	IO_STATUS_BLOCK statusBlock;
 	HANDLE outHandle;
-	NTSTATUS rv = NtOpenFile(
+
+	NT_WRAPPER(NtOpenFile)(this,
 		&outHandle,
 		(ACCESS_MASK)IAccessRights::GenericAccessRights::All,
 		&ObjectAttributeFactory::CreateObjectAttribute(this, ObjectAttributeFactory::ObjectAttributeType::DEFAULT),
@@ -38,7 +40,6 @@ void File::Open()
 		IShareAccess::CreateSharesMask(IShareAccess::FileShareOptions::Read, IShareAccess::FileShareOptions::Write, IShareAccess::FileShareOptions::Delete),
 		(ULONG)FileOpenOptions::FileType::NonDirectoryFile);
 	m_handle = outHandle;
-	std::cout << rv << std::endl;
 }
 
 void File::Delete()

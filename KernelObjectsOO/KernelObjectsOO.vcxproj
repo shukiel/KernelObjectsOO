@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="ErrorHandling\Exceptions\IException.h" />
     <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h" />
+    <ClInclude Include="ErrorHandling\Exceptions\SEExceptionHandler.h" />
     <ClInclude Include="ErrorHandling\NT_Wrapper.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileDirectory.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileOpenOptions.h" />
@@ -143,9 +144,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)Dependencies\plog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
