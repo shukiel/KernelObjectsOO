@@ -23,28 +23,36 @@
     <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h" />
     <ClInclude Include="ErrorHandling\Exceptions\SEExceptionHandler.h" />
     <ClInclude Include="ErrorHandling\NT_Wrapper.h" />
-    <ClInclude Include="ObjectHandler\ConcreteObjects\FileDirectory.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileOpenOptions.h" />
+    <ClInclude Include="ObjectHandler\ConcreteObjects\FileShareAccess.h" />
     <ClInclude Include="ObjectHandler\IAccessRights.h" />
+    <ClInclude Include="ObjectHandler\IObjectAttributes.h" />
     <ClInclude Include="ObjectHandler\ObjectAttributeFactory.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\file.h" />
     <ClInclude Include="ObjectHandler\IKernelObject.h" />
     <ClInclude Include="ObjectHandler\INamedObject.h" />
     <ClInclude Include="ObjectHandler\IShareAccess.h" />
     <ClInclude Include="ObjectHandler\IWindowsKernelObject.h" />
+    <ClInclude Include="ObjectHandler\ObjectAttributeMask.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SecurityObjects\ISecurity.h" />
+    <ClInclude Include="SecurityObjects\ISecurable.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ObjectHandler\ConcreteObjects\FileDirectory.cpp" />
     <ClCompile Include="ObjectHandler\ConcreteObjects\FileOpenOptions.cpp" />
     <ClCompile Include="ObjectHandler\INamedObject.cpp" />
+    <ClCompile Include="ObjectHandler\IObjectAttributes.cpp" />
     <ClCompile Include="ObjectHandler\ObjectAttributeFactory.cpp" />
     <ClCompile Include="ObjectHandler\ConcreteObjects\file.cpp" />
+    <ClCompile Include="ObjectHandler\ObjectAttributeMask.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tests\Tests.vcxproj">
+      <Project>{2677db72-f5f2-4035-bc05-26847466a20c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

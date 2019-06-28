@@ -5,6 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-	File f; 
-	f.INamedObject::Open(L"\\??\\C:\\kakja.txt");
+	OOK::File f;
+	f.INamedObject::Open((L"\\??\\C:\\kaka.txt"));
+	f.Open();
 }

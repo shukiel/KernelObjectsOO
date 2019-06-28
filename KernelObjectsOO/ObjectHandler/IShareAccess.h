@@ -1,19 +1,17 @@
 #pragma once
 #include <windows.h>
-//#include <winnt.h>
+#include "Tools/TypeSafe.h"
 
-class IShareAccess
+namespace OOK
 {
-public:
-	enum class FileShareOptions 
+	class IShareAccess
 	{
-		Read = FILE_SHARE_READ, 
-		Write = FILE_SHARE_WRITE,
-		Delete = FILE_SHARE_DELETE
+	public:
+		template <typename ...T>
+		static DWORD CreateSharesMask(const T ... args)
+		{
+			//TODO:: Check typeSafe
+			return ((DWORD)args | ... | 0);
+		}
 	};
-	template <typename ...T>
-	static DWORD CreateSharesMask(T ... args)
-	{
-		return ((DWORD)args | ... | 0);
-	}
-};
+}

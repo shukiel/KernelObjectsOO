@@ -6,56 +6,58 @@
 /*
 In this class I want to create a status descriptor of the File Open Option it has been created with
 Also create a factory class to generate this kind of this class*/
-
-class FileOpenOptions
+namespace OOK
 {
-public:
-	enum class FileType
+	class FileOpenOptions
 	{
-		DirectoryFile = FILE_DIRECTORY_FILE,
-		NonDirectoryFile = FILE_NON_DIRECTORY_FILE,
+	public:
+		enum class FileType
+		{
+			DirectoryFile = FILE_DIRECTORY_FILE,
+			NonDirectoryFile = FILE_NON_DIRECTORY_FILE,
+		};
+
+		enum class FileSync
+		{
+			SyncIOAlert = FILE_SYNCHRONOUS_IO_ALERT,		//DesiredAccess SYNCHRONIZE must be on
+			SyncIONonAlert = FILE_SYNCHRONOUS_IO_NONALERT,	//DesiredAccess SYNCHRONIZE must be on
+
+			ReserveOPFilter = FILE_RESERVE_OPFILTER,			//Try to lock the file! will return -> STATUS_OPLOCK_NOT_GRANTED if not succedded (already locked)
+			CompleteIfOplocked = FILE_COMPLETE_IF_OPLOCKED,		//Will not wait for the lock to free. Will return -> STATUS_OPLOCK_NOT_GRANTED if not succedded
+			OpenRequiringOplock = FILE_OPEN_REQUIRING_OPLOCK
+		};
+
+		enum class FileAccessMethod
+		{
+			NoIntermidiateBuffering = FILE_NO_INTERMEDIATE_BUFFERING,	//if FILE_NO_INTERMEDIATE _BUFFERING on -> FILE_WRITE_THROUGH is on! ++ does not work with DesiredAccess parameter's FILE_APPEND_DATA 
+			WriteThrough = FILE_WRITE_THROUGH,
+			SequentialOnly = FILE_SEQUENTIAL_ONLY,
+			RandomAccess = FILE_RANDOM_ACCESS
+		};
+
+		enum class OnOpen
+		{
+		#if WINVER >= _WIN32_WINNT_WIN8
+			//fileSessionAware = FILE_SESSION_AWARE,
+		#endif
+			OpenByFileID = FILE_OPEN_BY_FILE_ID,
+			ReparsePoint = FILE_OPEN_REPARSE_POINT,
+			NoRecall = FILE_OPEN_NO_RECALL,
+			ForFreeSpaceQuery = FILE_OPEN_FOR_FREE_SPACE_QUERY,
+			RemoteInstance = FILE_OPEN_REMOTE_INSTANCE,
+			ForBackupIntent = FILE_OPEN_FOR_BACKUP_INTENT
+		};
+
+		enum class OnClose
+		{
+			DeleteOnClose = FILE_DELETE_ON_CLOSE
+		};
+
+		//FILE_SESSION_AWARE
+
+
 	};
-
-	enum class FileSync 
-	{
-		SyncIOAlert = FILE_SYNCHRONOUS_IO_ALERT,		//DesiredAccess SYNCHRONIZE must be on
-		SyncIONonAlert = FILE_SYNCHRONOUS_IO_NONALERT,	//DesiredAccess SYNCHRONIZE must be on
-
-		ReserveOPFilter = FILE_RESERVE_OPFILTER,			//Try to lock the file! will return -> STATUS_OPLOCK_NOT_GRANTED if not succedded (already locked)
-		CompleteIfOplocked = FILE_COMPLETE_IF_OPLOCKED,		//Will not wait for the lock to free. Will return -> STATUS_OPLOCK_NOT_GRANTED if not succedded
-		OpenRequiringOplock = FILE_OPEN_REQUIRING_OPLOCK
-	};
-
-	enum class FileAccessMethod
-	{
-		NoIntermidiateBuffering = FILE_NO_INTERMEDIATE_BUFFERING,	//if FILE_NO_INTERMEDIATE _BUFFERING on -> FILE_WRITE_THROUGH is on! ++ does not work with DesiredAccess parameter's FILE_APPEND_DATA 
-		WriteThrough = FILE_WRITE_THROUGH,
-		SequentialOnly = FILE_SEQUENTIAL_ONLY,
-		RandomAccess = FILE_RANDOM_ACCESS
-	};
-
-	enum class OnOpen
-	{
-#if WINVER >= _WIN32_WINNT_WIN8
-		//fileSessionAware = FILE_SESSION_AWARE,
-	#endif
-		OpenByFileID = FILE_OPEN_BY_FILE_ID,
-		ReparsePoint = FILE_OPEN_REPARSE_POINT,
-		NoRecall = FILE_OPEN_NO_RECALL,
-		ForFreeSpaceQuery = FILE_OPEN_FOR_FREE_SPACE_QUERY,
-		RemoteInstance = FILE_OPEN_REMOTE_INSTANCE,
-		ForBackupIntent = FILE_OPEN_FOR_BACKUP_INTENT
-	};
-
-	enum class OnClose
-	{
-		DeleteOnClose = FILE_DELETE_ON_CLOSE
-	};
-
-	//FILE_SESSION_AWARE
-
-
-};
+}
 
 /*
 

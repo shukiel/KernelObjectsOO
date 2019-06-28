@@ -1,23 +1,27 @@
 #pragma once
 #include "../INamedObject.h"
 
-class File : public INamedObject
+namespace OOK
 {
-public:
-	virtual void Create() override;
-
-
-	virtual void Close() override;
-
-
-	virtual void Destroy() override;
-
-
-	virtual void Open() override;
-
+	class File : public INamedObject
+	{
+	public:
+		virtual void Create() override;
 	
-	virtual void Delete();
+	
+		virtual void Close() override;
+	
+	
+		virtual void Destroy() override;
+	
+	
+		virtual void Open() override;
 
-
-	std::wstring getUNCFileName();
-};
+		using INamedObject::Open; //avoid shadowing
+		
+		virtual void Delete();
+	
+	
+		std::wstring getUNCFileName();
+	};
+}

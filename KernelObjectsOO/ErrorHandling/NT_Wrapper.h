@@ -6,109 +6,119 @@
 #include "ErrorHandling/Exceptions/SEExceptionHandler.h"
 #include <ostream>
 
-//Macro, not so good
-/*
+#define MAX_IDENTIFIER_LENGTH 2048
 
-#define NTSTATUS_WRAPPER (STATUS) \
-		\
-		if (NT_INFORMATION (STATUS))\
-		{\
-			/ *LOG() TODO:: Add logger* /\
-		}else if (NT_WARNING(STATUS))\
-		{\
-			/ *LOG EXCEPTION ?? TODO::* /\
-		}\
-		else if (!NT_SUCCESS(STATUS) && IsErrorFatal(rv, __FUNCTION__))\
-		{\
-			std::string::format(); \
-			throw IException(""); \
-		}else if(NT_ERROR(STATUS))\
-		{ \
-		}
-
-
-Generic ::
-template<typename Fn, Fn fn, typename... Args>
-typename std::result_of<Fn(Args...)>::type NTWrapper(Args... args)
+namespace OOK
 {
-	std::result_of<Fn(Args...)>::type retyval =  fn(std::forward<Args>(args)...);
-}
+	struct FunctionNameWrapper
+	{
+		const char funcName[MAX_IDENTIFIER_LENGTH];
+	};
+	//Macro, not so good
+	/*
 
-*/
+	#define NTSTATUS_WRAPPER (STATUS) \
+			\
+			if (NT_INFORMATION (STATUS))\
+			{\
+				/ *LOG() TODO:: Add logger* /\
+			}else if (NT_WARNING(STATUS))\
+			{\
+				/ *LOG EXCEPTION ?? TODO::* /\
+			}\
+			else if (!NT_SUCCESS(STATUS) && IsErrorFatal(rv, __FUNCTION__))\
+			{\
+				std::string::format(); \
+				throw IException(""); \
+			}else if(NT_ERROR(STATUS))\
+			{ \
+			}
 
-std::ostream& operator<<(std::ostream& os, IO_STATUS_BLOCK* sb)
-{
-	os << L"IO_STATUS_BLOCK info=" << std::hex << sb->Information << L"Status (NTSTATUS=" << sb->Status << std::dec;
-	return os;
-}
+
+	Generic ::
+	template<typename Fn, Fn fn, typename... Args>
+	typename std::result_of<Fn(Args...)>::type NTWrapper(Args... args)
+	{
+		std::result_of<Fn(Args...)>::type retyval =  fn(std::forward<Args>(args)...);
+	}
+
+	*/
+
+	std::ostream& operator<<(std::ostream& os, IO_STATUS_BLOCK* sb)
+	{
+		os << L"IO_STATUS_BLOCK info=" << std::hex << sb->Information << L"Status (NTSTATUS=" << sb->Status << std::dec;
+		return os;
+	}
 
 #define NT_WRAPPER(FUNC) NTWrapper<decltype(&FUNC), &FUNC> 
 
-template<typename Fn, Fn fn, typename... Args>
- NTSTATUS NTWrapper(IKernelObject* kernelObject, Args... args)
-{
-	plog::init(plog::info, "poop.log");
+	template<typename Fn, Fn fn, typename... Args>
+	constexpr NTSTATUS NTWrapper(IKernelObject* kernelObject, Args... args)
+	{
+		plog::init(plog::info, "poop.log");
 
-	NTSTATUS retval;
-	try
-	{
-		retval = fn(std::forward<Args>(args)...);	
-	}
-	catch (...)
-	{
-		PLOGI << "Windows thrown an runtime error";
-		std::cout << "Huge turd on my face" << std::endl;
-	}
-
-	if (NT_INFORMATION(retval))
-	{
-		/*LOG */ 
-	}
-	else if (NT_WARNING(retval))
-	{
-		/*LOG */ 
-	}
-	else if (NT_SUCCESS(retval))
-	{
-		PLOGI << "YAY";
-	}
-	else if (NT_ERROR(retval))
-	{ 
-		if (true)// kernelObject->IsErrorFatal(this->IsFatalError(retval,fn)))
+		NTSTATUS retval;
+		try
 		{
-			std::stringstream ss;
-			ss << L"Runtime error within" << __FUNCTION__;
-			// ss << (args <<  ...) ;
-			ss << "failed with code - 0x" << std::hex << retval << std::dec;
-			std::cout << ss.str() << std::endl;
-			PLOGI << ss.str();
-			throw std::runtime_error(ss.str());
+			retval = fn(std::forward<Args>(args)...);
 		}
-		else
+		catch (...)
 		{
-			/*log warning, maybe throw a certain exception that would be handled in the calling func*/
+			PLOGI << "Windows thrown an runtime error";
+			std::cout << "Huge turd on my face" << std::endl;
 		}
-	}
 
-}
+		if (NT_INFORMATION(retval))
+		{
+			/*LOG */
+		}
+		else if (NT_WARNING(retval))
+		{
+			/*LOG */
+		}
+		else if (NT_SUCCESS(retval))
+		{
+			MessageBox(NULL, "", "", MB_OK);
+			PLOGI << "kooo";
+		}
+		else if (NT_ERROR(retval))
+		{
+			if (true)// kernelObject->IsErrorFatal(this->IsFatalError(retval,fn)))
+			{
+				std::stringstream ss;
+				ss << L"Runtime error within" << __FUNCTION__;
+				// ss << (args <<  ...) ;
+				ss << "failed with code - 0x" << std::hex << retval << std::dec;
+				std::cout << ss.str() << std::endl;
+				PLOGI << ss.str();
+				throw std::runtime_error(ss.str());
+			}
+			else
+			{
+				/*log warning, maybe throw a certain exception that would be handled in the calling func*/
+			}
+		}
+
+	}
 
 
 #define HR_WRAPPER(FUNC) HRWrapper<decltype(&FUNC), &FUNC>
 
-template<typename Fn, Fn fn, typename... Args>
- HRESULT HRWrapper(IKernelObject* kernelObject, Args... args)
-{
-	HRESULT retval = fn(std::forward<Args>(args)...);
-	if (SUCCEEDED (retval))
+	template<typename Fn, Fn fn, typename... Args>
+	HRESULT HRWrapper(IKernelObject* kernelObject, Args... args)
 	{
-		//YAY!
+		HRESULT retval = fn(std::forward<Args>(args)...);
+		if (SUCCEEDED(retval))
+		{
+			//YAY!
+		}
+		else if (NT_ERROR(retval))
+		{
+			/*if (IsErrorFatal(rv,))
+			throw ()*/
+		}
 	}
-	else if (NT_ERROR(retval))
-	{
-		/*if (IsErrorFatal(rv,))
-		throw ()*/
-	}
-}
+}//end OOK
 
 
 

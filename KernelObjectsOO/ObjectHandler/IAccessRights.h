@@ -4,45 +4,48 @@
 //#include <WinInet.h>
 
 //This abstract class will supply us with the standard, Basic and Generic Access Rights options, for object specific access - look for the specific sub-classes.
-class IAccessRights
+namespace OOK
 {
-public:
-	//Using these will turn on the correct bits within the specific access rights, depending on the object type
-	enum GenericAccessRights
+	class IAccessRights
 	{
-		Read = GENERIC_READ,
-		Write = GENERIC_WRITE,
-		Execute = GENERIC_EXECUTE,
-		All = GENERIC_ALL
+	public:
+		//Using these will turn on the correct bits within the specific access rights, depending on the object type
+		enum class GenericAccessRights
+		{
+			Read = GENERIC_READ,
+			Write = GENERIC_WRITE,
+			Execute = GENERIC_EXECUTE,
+			All = GENERIC_ALL
+		};
+
+		enum class StandartAccessRights
+		{
+			Read = STANDARD_RIGHTS_READ,
+			Write = STANDARD_RIGHTS_WRITE,
+			Execute = STANDARD_RIGHTS_EXECUTE,
+			All = STANDARD_RIGHTS_ALL
+		};
+
+		enum class BasicAccessRight
+		{
+			Delete = DELETE,
+			ReadControl = READ_CONTROL,
+			WriteDAC = WRITE_DAC,
+			WriteOwner = WRITE_OWNER,
+			Syncronize = SYNCHRONIZE
+		};
+
+		//Specific Rights
+		static const ACCESS_MASK AllSpecificRights = SPECIFIC_RIGHTS_ALL;
+
+		//System Access 
+		static const ACCESS_MASK SyetmSecurity = ACCESS_SYSTEM_SECURITY;
+
+		//Maximum Access
+		static const ACCESS_MASK Maximum = MAXIMUM_ALLOWED;
+
 	};
-
-	enum StandartAccessRights
-	{
-		Read = STANDARD_RIGHTS_READ,
-		Write = STANDARD_RIGHTS_WRITE,
-		Execute = STANDARD_RIGHTS_EXECUTE,
-		All = STANDARD_RIGHTS_ALL
-	};
-
-	enum BasicAccessRight
-	{
-		Delete = DELETE,
-		ReadControl = READ_CONTROL,
-		WriteDAC = WRITE_DAC,
-		WriteOwner = WRITE_OWNER,
-		Syncronize = SYNCHRONIZE
-	};
-
-	//Specific Rights
-	static const ACCESS_MASK AllSpecificRights = SPECIFIC_RIGHTS_ALL;
-
-	//System Access 
-	static const ACCESS_MASK SyetmSecurity = ACCESS_SYSTEM_SECURITY;
-
-	//Maximum Access
-	static const ACCESS_MASK Maximum = MAXIMUM_ALLOWED;
-
-};
+}//end OOK
 
 //    1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0
 //   +-------+-------+---------------+-------------------------------+

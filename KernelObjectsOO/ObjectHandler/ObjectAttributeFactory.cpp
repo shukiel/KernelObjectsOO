@@ -3,25 +3,28 @@
 #include "INamedObject.h"
 #include "Tools/StringTools.h"
 
-OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateObjectAttribute(INamedObject *namedObject, ObjectAttributeType type)
+namespace OOK
 {
-	switch(type)
+	OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateObjectAttribute(INamedObject *namedObject, ObjectAttributeType type)
 	{
-	case DEFAULT:
-		return CreateDefaulObjectAttribute(namedObject);
+		switch(type)
+		{
+		case DEFAULT:
+			return CreateDefaulObjectAttribute(namedObject);
+		}
+	
+		return OBJECT_ATTRIBUTES();
 	}
-
-	return OBJECT_ATTRIBUTES();
+	
+	OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateDefaulObjectAttribute(INamedObject* namedObject)
+	{
+		OBJECT_ATTRIBUTES outObjectAttribute;
+		PUNICODE_STRING tempName = tools::getUnicodeStringFromWstring(namedObject->getName());
+		InitializeObjectAttributes(&outObjectAttribute, tempName,OBJ_INHERIT, NULL, NULL);
+		return outObjectAttribute;
+	}
+	
 }
-
-OBJECT_ATTRIBUTES ObjectAttributeFactory::CreateDefaulObjectAttribute(INamedObject* namedObject)
-{
-	OBJECT_ATTRIBUTES outObjectAttribute;
-	PUNICODE_STRING tempName = tools::getUnicodeStringFromWstring(namedObject->getName());
-	InitializeObjectAttributes(&outObjectAttribute, tempName,OBJ_INHERIT, NULL, NULL);
-	return outObjectAttribute;
-}
-
 
 
 /*
