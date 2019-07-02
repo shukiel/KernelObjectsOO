@@ -1,6 +1,6 @@
 #pragma once
 #include <windows.h>
-#include "Tools/TypeSafe.h"
+#include "../Tools/TypeSafe.h"
 
 namespace OOK
 {

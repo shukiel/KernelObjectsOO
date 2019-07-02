@@ -3,9 +3,9 @@
 
 namespace OOK
 {
-	LONG ObjectAttributeMask::getNativeAttributeMask()
+	ULONG ObjectAttributeMask::getNativeAttributeMask()
 	{
-		LONG res = 0;
+		ULONG res = 0;
 		res |= m_isInheritable				? OBJ_INHERIT 			   :0;
 		res |= m_isClosedOnZeroRefference	? OBJ_PERMANENT			   :0;
 		res |= m_exclusive					? OBJ_EXCLUSIVE			   :0;

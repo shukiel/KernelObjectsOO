@@ -5,6 +5,7 @@
 #include "ObjectHandler/IKernelObject.h"
 #include "ErrorHandling/Exceptions/SEExceptionHandler.h"
 #include <ostream>
+#include <type_traits>
 
 #define MAX_IDENTIFIER_LENGTH 2048
 
@@ -53,10 +54,8 @@ namespace OOK
 #define NT_WRAPPER(FUNC) NTWrapper<decltype(&FUNC), &FUNC> 
 
 	template<typename Fn, Fn fn, typename... Args>
-	constexpr NTSTATUS NTWrapper(IKernelObject* kernelObject, Args... args)
+	constexpr NTSTATUS NTWrapper(Args... args)
 	{
-		plog::init(plog::info, "poop.log");
-
 		NTSTATUS retval;
 		try
 		{

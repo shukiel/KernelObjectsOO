@@ -17,7 +17,7 @@ namespace OOK
 	
 	void File::Close()
 	{
-		NtClose(this->m_handle);
+		NT_WRAPPER(NtClose)(this->GetHandle());
 	}
 	
 	void File::Destroy()
@@ -32,14 +32,15 @@ namespace OOK
 		IO_STATUS_BLOCK statusBlock;
 		HANDLE outHandle;
 	
-		NT_WRAPPER(NtOpenFile)(this,
+		NT_WRAPPER(NtOpenFile)(
 			&outHandle,
 			(ACCESS_MASK)IAccessRights::GenericAccessRights::All,
 			&ObjectAttributeFactory::CreateObjectAttribute(this, ObjectAttributeFactory::ObjectAttributeType::DEFAULT),
 			&statusBlock,
 			FileShareAccess::CreateSharesMask(FileShareAccess::FileShareOptions::Read, FileShareAccess::FileShareOptions::Write, FileShareAccess::FileShareOptions::Delete),
 			(ULONG)FileOpenOptions::FileType::NonDirectoryFile);
-		m_handle = outHandle;
+
+		setHandle(outHandle);
 	}
 	
 	void File::Delete()

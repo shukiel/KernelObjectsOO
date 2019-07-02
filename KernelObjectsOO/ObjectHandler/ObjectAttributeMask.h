@@ -9,6 +9,8 @@ namespace OOK
 	class ObjectAttributeMask 
 	{
 	public:
+		ObjectAttributeMask() = default;
+
 		ObjectAttributeMask(
 			bool isInheritable,
 			bool isClosedOnZeroRefference,
@@ -27,26 +29,26 @@ namespace OOK
 			m_kernelHandle(kernelHandle),
 			m_checkAccessInKernelMode(checkAccessInKernelMode) {}
 	
-		operator LONG() { return getNativeAttributeMask(); }
-	
+		operator ULONG() { return getNativeAttributeMask(); }
+		ULONG getNativeAttributeMask();
+
 	protected:
-	
-	private:
-		bool m_isInheritable;				//OBJ_INHERIT;
-		bool m_isClosedOnZeroRefference;	//OBJ_PERMANENT
-		bool m_exclusive;					//OBJ_EXCLUSIVE
-		bool m_caseSensitive;				//OBJ_CASE_INSENSITIVE
-		bool m_openIfExists;				//OBJ_OPENIF
-		bool m_openLinkNotTarget;			//OBJ_OPENLINK
-		bool m_kernelHandle;				//OBJ_KERNEL_HANDLE
-		bool m_checkAccessInKernelMode;		//OBJ_FORCE_ACCESS_CHECK
-	
+		bool m_isInheritable = false;					//OBJ_INHERIT;
+		bool m_isClosedOnZeroRefference = false;		//OBJ_PERMANENT
+		bool m_exclusive = false;							//OBJ_EXCLUSIVE
+		bool m_caseSensitive = false;						//OBJ_CASE_INSENSITIVE
+		bool m_openIfExists = false;						//OBJ_OPENIF
+		bool m_openLinkNotTarget = false;				//OBJ_OPENLINK
+		bool m_kernelHandle = false;						//OBJ_KERNEL_HANDLE
+		bool m_checkAccessInKernelMode = false;			//OBJ_FORCE_ACCESS_CHECK
+
 		/*	Currently not documented.
 		bool m_	OBJ_IGNORE_IMPERSONATED_DEVICEMAP
 		bool m_	OBJ_DONT_REPARSE
 		bool m_	OBJ_VALID_ATTRIBUTES
 		*/
+
+	private:
 	
-		LONG getNativeAttributeMask();
 	};
 }

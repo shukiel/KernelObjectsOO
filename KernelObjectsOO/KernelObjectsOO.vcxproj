@@ -23,6 +23,7 @@
     <ClInclude Include="ErrorHandling\Exceptions\NamedObjectNotInitalizedException.h" />
     <ClInclude Include="ErrorHandling\Exceptions\SEExceptionHandler.h" />
     <ClInclude Include="ErrorHandling\NT_Wrapper.h" />
+    <ClInclude Include="init.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileOpenOptions.h" />
     <ClInclude Include="ObjectHandler\ConcreteObjects\FileShareAccess.h" />
     <ClInclude Include="ObjectHandler\IAccessRights.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="init.cpp" />
     <ClCompile Include="ObjectHandler\ConcreteObjects\FileOpenOptions.cpp" />
     <ClCompile Include="ObjectHandler\INamedObject.cpp" />
     <ClCompile Include="ObjectHandler\IObjectAttributes.cpp" />
@@ -123,6 +125,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalUsingDirectories>$(SolutionDir);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,10 +155,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir);$(SolutionDir)Dependencies\plog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Tools;$(SolutionDir);$(SolutionDir)Dependencies\plog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Async</ExceptionHandling>
+      <AdditionalUsingDirectories>$(SolutionDir);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

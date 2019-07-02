@@ -1,5 +1,7 @@
 #pragma once
 #include "../INamedObject.h"
+#include "FileOpenOptions.h"
+#include "FileShareAccess.h"
 
 namespace OOK
 {
@@ -23,5 +25,10 @@ namespace OOK
 	
 	
 		std::wstring getUNCFileName();
+	
+	protected:
+		FileOpenOptions m_openOptions;
+		FileShareAccess m_shareOptions;
+	private:
 	};
 }

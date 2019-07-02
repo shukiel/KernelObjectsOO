@@ -84,6 +84,9 @@
     <ClInclude Include="ObjectHandler\ObjectAttributeMask.h">
       <Filter>Source Files\ObjectHandler</Filter>
     </ClInclude>
+    <ClInclude Include="init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectHandler\ConcreteObjects\file.cpp">
@@ -104,8 +107,11 @@
     <ClCompile Include="ObjectHandler\INamedObject.cpp">
       <Filter>Source Files\ObjectHandler</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectHandler\IObjectAttributes.cpp">
+    <ClCompile Include="init.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectHandler\IObjectAttributes.cpp">
+      <Filter>Source Files\ObjectHandler</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #pragma once
-#include "ObjectHandler/IShareAccess.h"
+#include "../IShareAccess.h"
 
 namespace OOK
 {
