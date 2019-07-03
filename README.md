@@ -6,3 +6,7 @@ Dependencies:
 VS2019 (or any other VS that supports V++17)
 Windows SDK
 Windoes DDK
+
+In Project Dependencies:
+GTest
+PLOG
