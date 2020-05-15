@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KernelObjectsOO", "KernelObjectsOO\KernelObjectsOO.vcxproj", "{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E4BC5E0D-FA8E-4145-B34D-67246C07F7FF} = {E4BC5E0D-FA8E-4145-B34D-67246C07F7FF}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{2677DB72-F5F2-4035-BC05-26847466A20C}"
 EndProject
@@ -26,8 +29,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x64.ActiveCfg = Debug|x64
 		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x64.Build.0 = Debug|x64
-		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x86.ActiveCfg = Release|x64
-		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x86.Build.0 = Release|x64
+		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x86.ActiveCfg = Debug|Win32
+		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Debug|x86.Build.0 = Debug|Win32
 		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Release|x64.ActiveCfg = Release|x64
 		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Release|x64.Build.0 = Release|x64
 		{3CFCCA9F-DD79-420D-8612-73DCB5F3543A}.Release|x86.ActiveCfg = Release|Win32

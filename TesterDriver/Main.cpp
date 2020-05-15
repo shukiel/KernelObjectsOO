@@ -10,4 +10,5 @@ int main(int argc, char* argv[])
 	OOK::File f;
 	f.INamedObject::Open((L"\\??\\C:\\kaka.txt"));
 	f.Open();
+	return 0;
 }

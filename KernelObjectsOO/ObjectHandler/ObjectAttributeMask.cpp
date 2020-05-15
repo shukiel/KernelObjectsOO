@@ -14,5 +14,7 @@ namespace OOK
 		res |= m_openLinkNotTarget			? OBJ_OPENLINK			   :0;
 		res |= m_kernelHandle				? OBJ_KERNEL_HANDLE		   :0;
 		res |= m_checkAccessInKernelMode	? OBJ_FORCE_ACCESS_CHECK   :0;
+
+		return {};
 	}
 }

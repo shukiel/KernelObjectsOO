@@ -20,7 +20,7 @@ namespace OOK
 		SECURITY_DESCRIPTOR m_securityDescriptor = {};
 
 	private:
-		OBJECT_ATTRIBUTES& getNativeObject_Attributtes();
+		OBJECT_ATTRIBUTES getNativeObject_Attributtes();
 		OBJECT_ATTRIBUTES m_nativeObjectAttribute;
 	}; 
 }

@@ -65,6 +65,7 @@ namespace OOK
 		{
 			PLOGI << "Windows thrown an runtime error";
 			std::cout << "Huge turd on my face" << std::endl;
+			throw;
 		}
 
 		if (NT_INFORMATION(retval))
@@ -77,7 +78,7 @@ namespace OOK
 		}
 		else if (NT_SUCCESS(retval))
 		{
-			MessageBox(NULL, "", "", MB_OK);
+			MessageBoxW(NULL, L"", L"", MB_OK);
 			PLOGI << "kooo";
 		}
 		else if (NT_ERROR(retval))
@@ -97,7 +98,7 @@ namespace OOK
 				/*log warning, maybe throw a certain exception that would be handled in the calling func*/
 			}
 		}
-
+		return 0;	//todo change to something meaningful
 	}
 
 

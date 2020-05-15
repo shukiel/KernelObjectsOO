@@ -8,7 +8,7 @@ class IAccessRights
 {
 public:
 	//Using these will turn on the correct bits within the specific access rights, depending on the object type
-	enum class GenericAccessRights 
+	enum class GenericAccessRights : ACCESS_MASK
 	{
 		Read = GENERIC_READ,
 		Write = GENERIC_WRITE,
@@ -16,7 +16,7 @@ public:
 		All = GENERIC_ALL
 	}; 
 
-	enum class StandartAccessRights
+	enum class StandartAccessRights : ACCESS_MASK
 	{
 		Read = STANDARD_RIGHTS_READ,
 		Write = STANDARD_RIGHTS_WRITE,
@@ -24,7 +24,7 @@ public:
 		All = STANDARD_RIGHTS_ALL
 	};			 
 
-	enum class BasicAccessRight 
+	enum class BasicAccessRight : ACCESS_MASK
 	{
 		Delete = DELETE,
 		ReadControl = READ_CONTROL,

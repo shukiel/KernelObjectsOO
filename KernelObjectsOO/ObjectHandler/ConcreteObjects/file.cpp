@@ -31,13 +31,15 @@ namespace OOK
 	
 		IO_STATUS_BLOCK statusBlock;
 		HANDLE outHandle;
-	
+
+		auto attrb = ObjectAttributeFactory::CreateObjectAttribute(this, ObjectAttributeFactory::ObjectAttributeType::DEFAULT);
+		auto fileShareAtt = FileShareAccess::CreateSharesMask(FileShareAccess::FileShareOptions::Read, FileShareAccess::FileShareOptions::Write, FileShareAccess::FileShareOptions::Delete);
 		NT_WRAPPER(NtOpenFile)(
 			&outHandle,
 			(ACCESS_MASK)IAccessRights::GenericAccessRights::All,
-			&ObjectAttributeFactory::CreateObjectAttribute(this, ObjectAttributeFactory::ObjectAttributeType::DEFAULT),
+			&attrb,
 			&statusBlock,
-			FileShareAccess::CreateSharesMask(FileShareAccess::FileShareOptions::Read, FileShareAccess::FileShareOptions::Write, FileShareAccess::FileShareOptions::Delete),
+			fileShareAtt,
 			(ULONG)FileOpenOptions::FileType::NonDirectoryFile);
 
 		setHandle(outHandle);
